@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TitanTrack</string>
+
+
+    <!-- Login -->
+    <string name="login_title">TITAN</string>
+    <string name="login_title_accent">TRACK</string>
+    <string name="login_subtitle">Accede a tu cuenta</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="link_go_register">¿No tienes cuenta? Regístrate</string>
+
+    <!-- Registro -->
+    <string name="register_title">Crear cuenta</string>
+    <string name="hint_name">Nombre completo</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="link_go_login">¿Ya tienes cuenta? Inicia sesión</string>
+
 </resources>
