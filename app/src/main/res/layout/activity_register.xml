@@ -24,12 +24,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilName"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:boxStrokeColor="@color/titan_accent"
-        app:hintTextColor="@color/titan_text_secondary"
         app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -44,12 +41,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmailReg"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:boxStrokeColor="@color/titan_accent"
-        app:hintTextColor="@color/titan_text_secondary"
         app:layout_constraintTop_toBottomOf="@id/tilName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -64,12 +58,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPasswordReg"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:boxStrokeColor="@color/titan_accent"
-        app:hintTextColor="@color/titan_text_secondary"
         app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/tilEmailReg"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,12 +76,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilConfirmPassword"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:boxStrokeColor="@color/titan_accent"
-        app:hintTextColor="@color/titan_text_secondary"
         app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/tilPasswordReg"
         app:layout_constraintStart_toStartOf="parent"

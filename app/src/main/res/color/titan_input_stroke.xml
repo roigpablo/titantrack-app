@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Declarando los colores para cambio de color de los bordes para acentuar sobre el modo oscuro -->
+    <item android:state_focused="true" android:color="@color/titan_accent" />
+    <item android:color="@color/titan_text_secondary" />
+
+</selector>

@@ -8,7 +8,19 @@
         <item name="colorSurface">@color/titan_surface</item>
         <item name="android:statusBarColor">@color/titan_background</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="textInputStyle">@style/Widget.TitanTrack.TextInputLayout</item>
     </style>
 
     <style name="Theme.TitanTrack" parent="Base.Theme.TitanTrack" />
+
+    <!-- Estilo por defecto de los campos de texto de TitanTrack -->
+    <style name="Widget.TitanTrack.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/titan_input_stroke</item>
+        <item name="android:textColorHint">@color/titan_text_secondary</item>
+        <item name="hintTextColor">@color/titan_text_secondary</item>
+        <item name="endIconTint">@color/titan_text_secondary</item>
+        <item name="passwordToggleTint">@color/titan_text_secondary</item>
+
+
+    </style>
 </resources>
