@@ -6,7 +6,11 @@
 
     <color name="titan_background">#1A1A1A</color>
     <color name="titan_surface">#2E2E2E</color>
+
+    <!-- Color naranja pero cambiando opacidad -->
     <color name="titan_accent">#FF6B35</color>
+    <color name="titan_nav_indicator">#33FF6B35</color>
+
     <color name="titan_text_primary">#FFFFFF</color>
     <color name="titan_text_secondary">#B0B0B0</color>
     <color name="titan_success">#00C896</color>

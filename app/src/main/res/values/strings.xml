@@ -18,4 +18,16 @@
     <string name="btn_register">Registrarse</string>
     <string name="link_go_login">¿Ya tienes cuenta? Inicia sesión</string>
 
+    <!-- Navegación inferior -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_routines">Rutinas</string>
+    <string name="nav_progress">Progreso</string>
+    <string name="nav_profile">Perfil</string>
+
+    <!-- Contenido provisional de cada sección -->
+    <string name="section_home">Panel de inicio</string>
+    <string name="section_routines">Tus rutinas</string>
+    <string name="section_progress">Tu progreso</string>
+    <string name="section_profile">Tu perfil</string>
+
 </resources>

@@ -2,7 +2,7 @@ package com.titantrack.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.titantrack.R;
@@ -14,13 +14,15 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Button btnRegister = findViewById(R.id.btnRegister);
         TextView tvGoLogin = findViewById(R.id.tvGoLogin);
-        tvGoLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Volvemos al Login cerrando esta Activity (no creamos una nueva instancia)
-                finish();
-            }
+
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(RegisterActivity.this, DashboardActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
+
+        tvGoLogin.setOnClickListener(v -> finish());
     }
 }

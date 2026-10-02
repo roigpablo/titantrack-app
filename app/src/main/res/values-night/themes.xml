@@ -10,6 +10,8 @@
         <item name="android:windowLightStatusBar">false</item>
 
         <item name="textInputStyle">@style/Widget.TitanTrack.TextInputLayout</item>
+
+        <item name="bottomNavigationStyle">@style/Widget.TitanTrack.BottomNavigationView</item>
     </style>
 
     <style name="Theme.TitanTrack" parent="Base.Theme.TitanTrack" />

@@ -9,6 +9,7 @@
         <item name="android:statusBarColor">@color/titan_background</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="textInputStyle">@style/Widget.TitanTrack.TextInputLayout</item>
+        <item name="bottomNavigationStyle">@style/Widget.TitanTrack.BottomNavigationView</item>
     </style>
 
     <style name="Theme.TitanTrack" parent="Base.Theme.TitanTrack" />
@@ -20,7 +21,18 @@
         <item name="hintTextColor">@color/titan_text_secondary</item>
         <item name="endIconTint">@color/titan_text_secondary</item>
         <item name="passwordToggleTint">@color/titan_text_secondary</item>
-
-
     </style>
+
+    <style name="Widget.TitanTrack.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/titan_surface</item>
+        <item name="itemIconTint">@color/titan_nav_item</item>
+        <item name="itemTextColor">@color/titan_nav_item</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.TitanTrack.BottomNavigationView.ActiveIndicator</item>
+    </style>
+
+    <style name="Widget.TitanTrack.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/titan_nav_indicator</item>
+    </style>
+
+
 </resources>
