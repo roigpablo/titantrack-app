@@ -30,4 +30,8 @@
     <string name="section_progress">Tu progreso</string>
     <string name="section_profile">Tu perfil</string>
 
+    <!-- Contenido para mostrar los ejercicios -->
+    <string name="exercise_sets_label">Series: %1$s</string>
+    <string name="exercise_level_label">Nivel: %1$s</string>
+
 </resources>

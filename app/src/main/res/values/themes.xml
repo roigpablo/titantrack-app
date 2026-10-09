@@ -10,6 +10,7 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="textInputStyle">@style/Widget.TitanTrack.TextInputLayout</item>
         <item name="bottomNavigationStyle">@style/Widget.TitanTrack.BottomNavigationView</item>
+        <item name="materialCardViewStyle">@style/Widget.TitanTrack.CardView</item>
     </style>
 
     <style name="Theme.TitanTrack" parent="Base.Theme.TitanTrack" />
@@ -34,5 +35,12 @@
         <item name="android:color">@color/titan_nav_indicator</item>
     </style>
 
+    <!-- Estilo por defecto de las tarjetas (MaterialCardView) de TitanTrack -->
+    <style name="Widget.TitanTrack.CardView" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/titan_surface</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
 
 </resources>
