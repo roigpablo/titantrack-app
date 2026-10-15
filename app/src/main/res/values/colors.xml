@@ -15,4 +15,7 @@
     <color name="titan_text_secondary">#B0B0B0</color>
     <color name="titan_success">#00C896</color>
 
+    <!-- Rojo claro para errores de validación (contraste suficiente sobre fondo oscuro) -->
+    <color name="titan_error">#FF5470</color>
+
 </resources>
