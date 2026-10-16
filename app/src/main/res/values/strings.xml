@@ -40,4 +40,7 @@
     <string name="error_password_short">La contraseña debe tener al menos 6 caracteres</string>
     <string name="error_password_mismatch">Las contraseñas no coinciden</string>
 
+    <!-- Contenido para mostrar en el boton de cerrar sesion -->
+    <string name="btn_logout">Cerrar sesión</string>
+
 </resources>
