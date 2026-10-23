@@ -43,4 +43,16 @@
     <!-- Contenido para mostrar en el boton de cerrar sesion -->
     <string name="btn_logout">Cerrar sesión</string>
 
+    <string name="btn_start_training">Iniciar entrenamiento</string>
+    <string name="training_title">Modo Entrenamiento</string>
+    <string name="training_current_set">Serie %1$d</string>
+    <string name="hint_weight">Peso (kg)</string>
+    <string name="hint_reps">Repeticiones</string>
+    <string name="btn_confirm_set">Confirmar serie</string>
+    <string name="training_rest_label">Descanso</string>
+    <string name="training_set_item">Serie %1$d: %2$s kg × %3$d reps</string>
+    <string name="training_summary">Series: %1$d · Volumen total: %2$s kg</string>
+    <string name="error_weight_invalid">Introduce un peso mayor que 0</string>
+    <string name="error_reps_invalid">Introduce un número de repeticiones mayor que 0</string>
+
 </resources>
