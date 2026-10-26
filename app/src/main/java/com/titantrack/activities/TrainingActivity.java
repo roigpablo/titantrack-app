@@ -1,9 +1,10 @@
 package com.titantrack.activities;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;                       // NUEVO
+import android.os.CountDownTimer;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;                                // NUEVO (S7)
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,16 +14,17 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.titantrack.R;
 import com.titantrack.adapters.SetAdapter;
+import com.titantrack.database.DatabaseHelper;              // NUEVO (S7)
 import com.titantrack.models.WorkoutSet;
 import com.titantrack.utils.FormatUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;                                // NUEVO
+import java.util.Locale;
 
 public class TrainingActivity extends AppCompatActivity {
 
-    private static final int REST_SECONDS = 60;         // NUEVO: duración del descanso
+    private static final int REST_SECONDS = 60;
 
     // Registro volátil en memoria: se pierde al destruirse la Activity
     private final List<WorkoutSet> sets = new ArrayList<>();
@@ -35,9 +37,11 @@ public class TrainingActivity extends AppCompatActivity {
     private TextInputEditText etReps;
     private TextView tvCurrentSet;
     private TextView tvSummary;
-    private TextView tvTimer;                           // NUEVO
-    private Button btnConfirmSet;                       // NUEVO (ahora es un campo)
-    private CountDownTimer restTimer;                   // NUEVO
+    private TextView tvTimer;
+    private Button btnConfirmSet;
+    private Button btnFinishTraining;                       // NUEVO (S7)
+    private CountDownTimer restTimer;
+    private DatabaseHelper dbHelper;                        // NUEVO (S7)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +54,21 @@ public class TrainingActivity extends AppCompatActivity {
         etReps = findViewById(R.id.etReps);
         tvCurrentSet = findViewById(R.id.tvCurrentSet);
         tvSummary = findViewById(R.id.tvSummary);
-        tvTimer = findViewById(R.id.tvTimer);           // NUEVO
+        tvTimer = findViewById(R.id.tvTimer);
         rvSets = findViewById(R.id.rvSets);
         btnConfirmSet = findViewById(R.id.btnConfirmSet);
+        btnFinishTraining = findViewById(R.id.btnFinishTraining);   // NUEVO (S7)
+
+        dbHelper = new DatabaseHelper(this);                // NUEVO (S7)
 
         setAdapter = new SetAdapter(sets);
         rvSets.setLayoutManager(new LinearLayoutManager(this));
         rvSets.setAdapter(setAdapter);
 
         btnConfirmSet.setOnClickListener(v -> confirmSet());
+        btnFinishTraining.setOnClickListener(v -> finishTraining());   // NUEVO (S7)
 
-        tvTimer.setText(formatTime(0));                 // NUEVO: muestra 00:00 al empezar
+        tvTimer.setText(formatTime(0));
         updateCurrentSet();
         updateSummary();
     }
@@ -84,10 +92,26 @@ public class TrainingActivity extends AppCompatActivity {
 
         updateCurrentSet();
         updateSummary();
-        startRestTimer();                               // NUEVO
+        startRestTimer();
     }
 
-    // NUEVO: descanso entre series con cuenta atrás visual
+    // NUEVO (S7): vuelca la sesión en memoria al disco (SQLite) y cierra la pantalla
+    private void finishTraining() {
+        if (sets.isEmpty()) {
+            Toast.makeText(this, R.string.training_no_sets, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        dbHelper.insertarEntrenamiento(
+                FormatUtils.formatDateTime(System.currentTimeMillis()),
+                sets.size(),
+                getTotalVolume());
+
+        Toast.makeText(this, R.string.training_saved, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    // Descanso entre series con cuenta atrás visual
     private void startRestTimer() {
         btnConfirmSet.setEnabled(false);
 
@@ -105,7 +129,7 @@ public class TrainingActivity extends AppCompatActivity {
         }.start();
     }
 
-    // NUEVO: convierte milisegundos a formato mm:ss
+    // Convierte milisegundos a formato mm:ss
     private String formatTime(long millis) {
         long totalSeconds = Math.round(millis / 1000.0);
         return String.format(Locale.getDefault(), "%02d:%02d",
@@ -155,21 +179,27 @@ public class TrainingActivity extends AppCompatActivity {
         tvCurrentSet.setText(getString(R.string.training_current_set, sets.size() + 1));
     }
 
-    private void updateSummary() {
+    // NUEVO (S7): el cálculo del volumen se extrae para usarlo en el resumen y al guardar
+    private double getTotalVolume() {
         double totalVolume = 0;
         for (WorkoutSet workoutSet : sets) {
             totalVolume += workoutSet.getVolume();
         }
-        tvSummary.setText(getString(R.string.training_summary,
-                sets.size(), FormatUtils.formatKg(totalVolume)));
+        return totalVolume;
     }
 
-    // NUEVO: evita que el temporizador siga vivo cuando la pantalla ya no existe
+    private void updateSummary() {
+        tvSummary.setText(getString(R.string.training_summary,
+                sets.size(), FormatUtils.formatKg(getTotalVolume())));
+    }
+
+    // Evita que el temporizador siga vivo y libera la base de datos al cerrar la pantalla
     @Override
     protected void onDestroy() {
         if (restTimer != null) {
             restTimer.cancel();
         }
+        dbHelper.close();                                   // NUEVO (S7)
         super.onDestroy();
     }
 }

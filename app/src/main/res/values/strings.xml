@@ -55,4 +55,15 @@
     <string name="error_weight_invalid">Introduce un peso mayor que 0</string>
     <string name="error_reps_invalid">Introduce un número de repeticiones mayor que 0</string>
 
+
+    <!-- Contenido para finalizar entrenamiento -->
+
+    <string name="btn_finish_training">Finalizar entrenamiento</string>
+    <string name="training_saved">Entrenamiento guardado</string>
+    <string name="training_no_sets">Registra al menos una serie antes de finalizar</string>
+
+    <!-- Contenido para mostrar historial de entrenamientos -->
+    <string name="history_title">Historial de entrenamientos</string>
+    <string name="history_empty">Aún no hay entrenamientos guardados</string>
+    <string name="history_item_summary">%1$d series · %2$s kg</string>
 </resources>
